@@ -1,0 +1,22 @@
+ORG 1000H
+
+      NUM1 DB 3
+      NUM2 DB 5
+      RES  DB ?
+
+      ORG 2000H
+
+      MOV CL, NUM1
+      MOV CH, NUM2
+      MOV AX, 0
+NSWP: CMP CL, 0
+      JZ FIN
+MUL:  ADD AL, CH
+      ADC AH, 0
+      DEC CL
+      JNZ MUL
+
+  
+FIN:  MOV RES, AL
+      HLT
+      END
